@@ -1,0 +1,87 @@
+/* Reset alle marges van alle elementen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Definieer de achtergrondkleur van de HTML-pagina */
+html {
+  background-color: #514e4e;
+}
+
+/* Definieer de stijl van alle witte links */
+.white {
+  color: white;
+  text-decoration: none;
+}
+
+/* Definieer de stijl van de header */
+header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #516582;
+  padding: 20px;
+  align-items: center;
+}
+
+/* Definieer de stijl van het logo */
+.logo {
+	height: 100px;
+    width: 200px;
+    border-radius: 5%;
+}
+
+/* Definieer de stijl van de navigatie */
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+main h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* main stijl */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+main p {
+  margin-bottom: 20px;
+  color: whitesmoke;
+}
+
+/* footer stijl */
+footer {
+  background-color: #eee;
+  color: #777;
+  padding: 10px;
+  text-align: center;
+  position: absolute
+  top 100 vh ;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/* links stijl */
+a {
+  color: #516582;
+  text-decoration: none;
+  border-bottom: 2px solid #516582;
+}
+
+a:hover {
+  background-color: #516582;
+  color: #fff;
+}
+
