@@ -2,7 +2,8 @@
 // Include database.php, check database.php for more info
 include_once 'database.php';
 // Saves everything from the table questions in $result
-$result = mysqli_query($conn,"SELECT * FROM questions");
+$stmt = $conn->query("SELECT * FROM questions");
+$result = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,24 +26,18 @@ $result = mysqli_query($conn,"SELECT * FROM questions");
         </nav>
     </header>
 	<main>
-			
-		<?php
-		// This will keep executing untill result is equal to or lower then 0
-		if (mysqli_num_rows($result) > 0) {
-		?>
 		<table>
 			  <tr>
 			    <td>Vraagnummer:</td>
 				<td>Vragen</td>
 				<td>Score</td>
 			  </tr>
-					<?php
-					// Establishes $i. as in index makes it easier to do a while loop, the i itself is also used as a fake question id. Since the real id's tend to get messy and out of order.
-					$i=1;
-					// Starts the while loop to display all questions
-					while($row = mysqli_fetch_array($result)) {
-					?>
 						<tr>
+						<?php
+		// This will keep executing untill result is equal to or lower then 0
+		$i=1;
+		foreach ($result as $row) {
+		?>
 							<!--echos $i to act as a fake id-->
 							<td><?php echo $i?></td>
 							<!--Echos the question and score that question has-->
@@ -67,15 +62,9 @@ $result = mysqli_query($conn,"SELECT * FROM questions");
 						// if you dont know what this is i am very concerned 
 						// Anil doesnt know this line of code thats why he writes this ^
 						$i++;
-					}
+								}
 						?>
 		</table>
-		 <?php
-		}else{
-			//roasts the user.
-		    echo "No result found";
-		}
-		?>	
 	</main>
 	<footer>
 		<p>Gemaakt door het team van MBO Rijnland</p>

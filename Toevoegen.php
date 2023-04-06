@@ -1,6 +1,9 @@
 <?php
     // Includes the daatabase connection, very important no delete
     include_once 'database.php';
+    $stmt = $conn->prepare("INSERT INTO questions (question, score) VALUES(:question, :score)");
+    $stmt->bindParam(':question', $_POST['question']);
+    $stmt->bindParam(':score', $_POST['score']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +46,7 @@
                     echo 'An unkown error occurred. This usually happends when you dont fill give a value within the specified ranges.';
                 } else {
                     // updates the database if it is
-                    $result = mysqli_query($conn,"INSERT INTO questions (question, score) VALUES('".$_POST['question']."','".$_POST['score']."')");
+                    $stmt->execute();
                 }
             }
             ?>
