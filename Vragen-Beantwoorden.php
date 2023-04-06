@@ -5,6 +5,12 @@
     }
     $score = 0;
 
+    if($_SESSION['score'] > 10){
+        echo 'We recommend to keep it';
+    } elseif ($_SESSION['score'] < -10) {
+        echo 'We recommend to remove it';
+    }
+
     function fetch($value){
         include 'database.php';
         // makes the $result value global, making it useable outside the function
