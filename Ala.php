@@ -8,16 +8,18 @@
     <link rel="stylesheet" type="text/css" href="Ala.css">
 </head>
 <body>
-    <header>
-        <img class="logo" src="Logo.png">
+<header>
+	<img class="logo" src="DocuCheck.png ">
         <nav>
             <a class="white" href="Ala.php">Home</a>
             <a class="white" href="Toevoegen.php">Toevoegen</a>
             <a class="white" href="Retrieve.php">Vragenlijst</a>
+			<a class="white" href="Vragen-Beantwoorden.php">Beantwoorden</a>
+			<a class="white" href="DocumentenCheck.php">DocuCheck</a>
         </nav>
 	</header>
 	<main>
-    <h1>Systeem voor het ordenen van documenten</h1>
+        <h1 class="black">Systeem voor het ordenen van documenten</h1>
 		<p>Welkom bij ons online systeem voor het ordenen van documenten!</p>
 		<p>Wij zijn een team van vier studenten van MBO Rijnland, en wij hebben in opdracht van het Ministerie van Binnenlandse Zaken een systeem ontwikkeld om ambtenaren te helpen bij het beheren van de documenten die zij ontvangen.</p>
 		<p>Ons systeem is ontworpen om het gemakkelijker te maken voor ambtenaren om te beslissen welke documenten moeten worden bewaard en welke kunnen worden weggegooid. Dit helpt niet alleen bij het creëren van een efficiëntere werkstroom, maar ook bij het waarborgen van de privacy van gevoelige informatie.</p>
@@ -27,6 +29,5 @@
 	<footer>
 		<p>Gemaakt door het team van MBO Rijnland</p>
 	</footer>
-
 </body>
 </html>

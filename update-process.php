@@ -1,20 +1,21 @@
 <?php
-include_once 'database.php';
+// Include database.php, check database.php for more info
+    include_once 'database.php';
 
-if(count($_POST)>0) {
-    mysqli_query($conn,"UPDATE questions SET 
-        question='" . $_POST['question'] ."',
-        score='" . $_POST['score'] ."'
-        WHERE id='" . $_GET['id'] ."'");  
-    $message = "Record Modified Successfully";
-}
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-} else {
-    $id = 1;
-}
-$result = mysqli_query($conn,"SELECT * FROM questions WHERE id=".$id);
-$row= mysqli_fetch_array($result);
+    if(count($_POST)>0) {
+        mysqli_query($conn,"UPDATE questions SET 
+            question='" . $_POST['question'] ."',
+            score='" . $_POST['score'] ."'
+            WHERE id='" . $_GET['id'] ."'");  
+        $message = "Record Modified Successfully";
+    }
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    } else {
+        $id = 1;
+    }
+    $result = mysqli_query($conn,"SELECT * FROM questions WHERE id=".$id);
+    $row= mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -26,14 +27,17 @@ $row= mysqli_fetch_array($result);
         <link rel="stylesheet" href="Ala.css">
     </head>
     <body>
-        <header>
-            <img class="logo" src="Logo.png">
-            <nav>
-                <a class="white" href="Ala.php">Home</a>
-                <a class="white" href="Toevoegen.php">Toevoegen</a>
-                <a class="white" href="Retrieve.php">Vragenlijst</a>
-            </nav>
+	    <header>
+	    <img class="logo" src="DocuCheck.png ">
+       <nav>
+            <a class="white" href="Ala.php">Home</a>
+            <a class="white" href="Toevoegen.php">Toevoegen</a>
+            <a class="white" href="Retrieve.php">Vragenlijst</a>
+			<a class="white" href="Vragen-Beantwoorden.php">Beantwoorden</a>
+			<a class="white" href="DocumentenCheck.php">DocuCheck</a>
+        </nav>
         </header>
+        <main>
             <form name="frmUser" method="POST" action="">
                 <div><?php if(isset($message)) { echo $message; } ?></div>
                 <div style="padding-bottom:5px;">
@@ -50,8 +54,9 @@ $row= mysqli_fetch_array($result);
                 <br>
                 <input type="submit" name="submit" value="Submit" class="buttom">
             </form>
+        </main>
         <footer>
-		<p>Gemaakt door het team van MBO Rijnland</p>
-	</footer>
+		    <p>Gemaakt door het team van MBO Rijnland</p>
+	    </footer>
     </body>
 </html>
