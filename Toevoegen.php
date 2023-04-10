@@ -30,10 +30,10 @@
                 <article>
                     <form method="POST">
                        Vraag:<br>
-                            <input type="text" name="question" placeholder="Voeg hier een vraag toe" require><br>
-                        <p>score:</p><br>
+                            <input type="text" name="question" placeholder="Voeg hier een vraag toe" require><br><br>
+                        Score:<br>
                                 <input type="number" name="score" placeholder="Voeg hier een cijfer van -3 tot 3." min="-3" max="3" require><br>
-                        <input type="submit" name="toevoegen" value="Beeschurgers">
+                        <input type="submit" name="toevoegen" value="Toevoegen">
                     </form>
                 </article>
             </section>
