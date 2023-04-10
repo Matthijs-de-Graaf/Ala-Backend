@@ -5,12 +5,6 @@
     }
     $score = 0;
 
-    if($_SESSION['score'] > 10){
-        echo 'We recommend to keep it';
-    } elseif ($_SESSION['score'] < -10) {
-        echo 'We recommend to remove it';
-    }
-
     function fetch($value){
         include 'database.php';
         // makes the $result value global, making it useable outside the function
@@ -40,7 +34,6 @@
         global $question;
 
         $question = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo "SELECT * FROM questions $query ORDER BY RAND() LIMIT 1";
     }
 
 
@@ -49,19 +42,22 @@
             // fetches for a questions with a score of 3
             fetch(3);
         } else if($a >= 0 || $a <= 0){
-            if($a >= 5 || $a <= -5){
+            if($a >= 7 || $a <= -7){
                 // fetches for a questions with a score of 2
+                fetch(1);
+            } elseif($a >= 4 || $a <= -4){
                 fetch(2);
-            } else {
-                // fetches for a question with thee score of 3
+            } else{
                 fetch(3);
-            }   
+            }
         }
     }
-    // if ($score === 0){
-    //     getQuestion($score);
-    // }
-    getQuestion($score);
+
+    if(isset($_SESSION['score'])){
+        getQuestion($_SESSION['score']);
+    } else{
+        getQuestion($score);
+    }
 
 ?>
 <!DOCTYPE html>
@@ -134,25 +130,19 @@ if (isset($_POST['MatthijsGae'])) {
         echo $_SESSION['score'];
     }
 }
-    echo '<br>';
-    echo '<br>';
-    foreach($_SESSION['id'] as $id){
-        echo $id;
-        echo '<br>';
-    }
-    ?>
-    
-    <form method="POST">
-        <h1>
-            SESSION abort button very epic gaymer moment
-        </h1>
-        <input type="submit" name='abort' value='abort'>
-    </form>
-    </main>
-    <?php
-        if(isset($_POST['abort'])){
-            session_unset();
+echo '<br>';
+echo '<br>';
+if(isset($_SESSION['score'])){
+    if($_SESSION['score'] >= 10 || $_SESSION['score'] <= -10){
+        if($_SESSION['score'] >= 10){
+            echo 'We recommend to keep the file';
+        } elseif($_SESSION['score'] <= -10){
+            echo 'We recommend to delete the file';
         }
+        session_unset();
+    }
+}
     ?>
+    </main>
     </body>
 <html>
