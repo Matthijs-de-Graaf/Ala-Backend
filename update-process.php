@@ -32,7 +32,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit vragen</title>
-        <link rel="stylesheet" href="Ala.css">
+        <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
 	    <header>
@@ -50,7 +50,7 @@
         <main>
             <form name="frmUser" method="POST">
                 <div><?php if(isset($message)) { echo $message; } ?></div>
-                <div style="padding-bottom:5px;">
+                <div>
                 <a href="retrieve.php">Terug naar de vragenlijst</a>
                 </div>
                 Vraagnummer:<br>
@@ -66,7 +66,21 @@
             </form>
         </main>
         <footer>
-		    <p>Gemaakt door het team van MBO Rijnland</p>
-	    </footer>
+		<article>
+			<h3>Contact ons:</h3>
+			<p>Betaplein 18, 2321 KS Leiden</p>
+			<p>Telefoonnummer: 31621092975</p>
+			<p>Email: 6028832@mborijnland.nl</p>
+		</article>
+<article>
+<h3>Follow Us</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fa fa-facebook">Facebook</i></a></li>
+          <li><a href="#"><i class="fa fa-twitter">Twitter</i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin">LinkedIn</i></a></li>
+          <li><a href="#"><i class="fa fa-instagram">Instagram</i></a></li>
+        </ul>
+</article>
+	</footer>
     </body>
 </html>

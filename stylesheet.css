@@ -1,0 +1,179 @@
+/* Reset alle marges van alle elementen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Definieer de achtergrondkleur van de HTML-pagina */
+body {
+  background: #f2f2f2;
+  font-size: 1.3rem;
+  padding-bottom: 100px; /* Hoogte van de footer */  
+}
+
+/* Definieer de stijl van alle witte links */
+.white {
+  color: white;
+  text-decoration: none;
+}
+
+.black {
+  color: black;
+}
+
+#score {
+  width: 15vw;
+}
+
+/* Definieer de stijl van de header */
+header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: rgba(18, 70, 190, 0.618);
+  padding: 20px;
+  align-items: center;
+}
+
+header a {
+  color: #516582;
+  text-decoration: none;
+  border-bottom: 2px solid #516582;
+}
+/* Definieer de stijl van het logo */
+.logo {
+  height: 100px;
+  width: 180px;
+  border-radius: 5%;
+}
+
+#logo_id {
+  grid-column: 2;
+  height: 100px;
+  width: 180px;
+  border-radius: 5%;
+}
+
+/* Definieer de stijl van de navigatie */
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+/* main stijl */
+main {
+  display: grid;
+  grid-template-columns: 2fr;
+  text-align: center;
+  height: 60vh;
+}
+
+.vragen {
+  width: 60vw;
+  color: white;
+  background-color: #7e7b7b;
+  padding: 1%;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+.vragen1 {
+  width: 50vw;
+  color: black;
+  padding: 0.5%;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+
+#id2 {
+  float: right;
+  background-color: #7e7b7b;
+  color: whitesmoke;
+  border-radius: 10px;
+  width: 25vw;
+  text-align: center;
+}
+
+main h1 {
+  margin-bottom: 1%;
+  font-size: 2.5rem;
+}
+
+main p {
+  margin-bottom: 10px;
+}
+
+/* button stijl */
+input::file-selector-button {
+  background: #3498db;
+  background-image: -webkit-linear-solid(top, #3498db, #0666a1);
+  background-image: -moz-linear-solid(top, #3498db, #0666a1);
+  background-image: -ms-linear-solid(top, #3498db, #0666a1);
+  background-image: -o-linear-solid(top, #3498db, #0666a1);
+  background-image: linear-solid(to bottom, #3498db, #0666a1);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  border-style: none;
+  font-family: Georgia;
+  color: white;
+  font-size: 0, 2rem;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-solid(top, #3498db, #0666a1);
+  background-image: -moz-linear-solid(top, #3498db, #0666a1);
+  background-image: -ms-linear-solid(top, #3498db, #0666a1);
+  background-image: -o-linear-solid(top, #3498db, #0666a1);
+  background-image: linear-solid(to bottom, #3498db, #0666a1);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  border-style: none;
+  font-family: Georgia;
+  color: white;
+  font-size: 0, 2rem;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-solid(top, #3cb0fd, #2785c4);
+  background-image: -moz-linear-solid(top, #3cb0fd, #2785c4);
+  background-image: -ms-linear-solid(top, #3cb0fd, #2785c4);
+  background-image: -o-linear-solid(top, #3cb0fd, #2785c4);
+  background-image: linear-solid(to bottom, #3cb0fd, #2785c4);
+  text-decoration: none;
+}
+
+/* links stijl */
+
+a {
+  color: rgba(0, 0, 0, 0.695);
+}
+
+a:hover {
+  background-color: #516582;
+  color: #fff;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: rgba(18, 70, 190, 0.618);
+  padding: 20px;
+  text-align: start;
+  justify-items: center;
+  width: 100%;
+  height: auto; 
+  position: fixed;
+  bottom: 0;
+}

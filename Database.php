@@ -9,6 +9,6 @@
         $conn->setAttribute(PDO::FETCH_ASSOC, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {
-        echo "The jews are at it again:<br>" . $e->getMessage();;
+        echo "Het werkt niet:<br>" . $e->getMessage();;
         }
 ?>

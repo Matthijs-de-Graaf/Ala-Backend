@@ -49,7 +49,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit vragen</title>
-        <link rel="stylesheet" href="Ala.css">
+        <link rel="stylesheet" href="stylesheet.css">
     </head>
 <body>
 <header>
@@ -89,10 +89,10 @@
         Nee<br>
         <input type="radio" name="answer" value="0">
         Weet ik niet<br>
-        <input type="Submit" name='MatthijsGae'>
+        <input type="Submit" name='formId'>
     </form>
     <?php
-    if(isset($_POST['MatthijsGae'])){
+    if(isset($_POST['formId'])){
         $_SESSION['score'] =+ $_POST['answer'];
         array_push($_SESSION['id'], $question['id']);
         echo $_SESSION['score'];
@@ -111,6 +111,22 @@
     }
     ?>
     </main>
-
+	<footer>
+		<article>
+			<h3>Contact ons:</h3>
+			<p>Betaplein 18, 2321 KS Leiden</p>
+			<p>Telefoonnummer: 31621092975</p>
+			<p>Email: 6028832@mborijnland.nl</p>
+		</article>
+<article>
+<h3>Follow Us</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fa fa-facebook">Facebook</i></a></li>
+          <li><a href="#"><i class="fa fa-twitter">Twitter</i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin">LinkedIn</i></a></li>
+          <li><a href="#"><i class="fa fa-instagram">Instagram</i></a></li>
+        </ul>
+</article>
+	</footer>
     </body>
 <html>

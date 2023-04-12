@@ -25,7 +25,6 @@
             }
             $query .= ')';
         }
-
         // Makes use of $query to costumize the search for questions. Also grabs a random one of the questions.
         $stmt = $conn->prepare("SELECT * FROM questions $query ORDER BY RAND() LIMIT 1");
         $stmt->execute();
@@ -66,11 +65,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit vragen</title>
-        <link rel="stylesheet" href="Ala.css">
+        <link rel="stylesheet" href="stylesheet.css">
     </head>
 <body>
 <header>
-	<img class="logo" src="DocuCheck.png ">
+	<img id="logo_id" src="DocuCheck.png ">
     </header>
     <main>
             <h1>
@@ -78,34 +77,54 @@
             </h1>
 
         <?php
+        ?>
+        <?php
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // Check if the 'question' key exists in $_POST
+          if (isset($_POST['question'])) {
+            $question = $_POST['question'];
+        
+            // ... rest of your code to process the question ...
+          } else {
+            // Handle case when 'question' key is not present in $_POST
+            echo "Error: No question provided";
+          }
+        }
+        ?><?php
         // Adds score value to ja and nee question
+        $ja = '';
+        $nee = '';
         foreach($question as $question){
-            $ja = $question['score'];
-            $nee = $question['score'] * -1;
+            if(isset($question['score'])){
+                $ja = $question['score'];
+                $nee = $question['score'] * -1;
+            }
         }
         
         // adds punten variable, as a session. (important)
         $_SESSION['punten'] = 0;
         ?>
     <form method="POST">
-        <?php
-        echo '<p>'.$question['question'].'</p>';
-        ?>
-        <input type="radio" name="answer" value=<?php
-        echo '"'.$ja.'"';
-        ?> required>
-        Ja<br>
-        <input type="radio" name="answer" value=<?php
-        echo '"'.$nee.'"'
-        // not yet decided if needed. We are not sure yet if saaying no should give you the inverse of the yes points.
-        ?> required>
-        Nee<br>
-        <input type="radio" name="answer" value="0" require>
-        Weet ik niet<br>
-        <input type="Submit" name='MatthijsGae'>
-    </form>
+       
+    <form method="POST">
     <?php
-if (isset($_POST['MatthijsGae'])) {
+    echo '<p>'.$question['question'].'</p>';
+    ?>
+    <input type="radio" name="answer" value=<?php
+    echo '"'.$ja.'"';
+    ?> required>
+    Ja<br>
+    <input type="radio" name="answer" value=<?php
+    echo '"'.$nee.'"';
+    ?> required>
+    Nee<br>
+    <input type="radio" name="answer" value="0" require>
+    Weet ik niet<br>
+    <input class="btn" type="Submit" name='formId' value="Verzenden">
+</form>
+<?php
+if (isset($_POST['formId'])) {
     if ($_POST['answer'] < 3 || $_POST['answer'] > -3) {
         if (isset($_SESSION['score'])) {
             $_SESSION['score'] += $_POST['answer'];
@@ -114,30 +133,26 @@ if (isset($_POST['MatthijsGae'])) {
             $_SESSION['score'] += $_POST['answer'];
         }
 
-        if (!in_array($question['id'], $_SESSION['id'])) {
-            array_push($_SESSION['id'], $question['id']);
-        }
-        unset($_POST['MatthijsGae']);
-        unset($_POST['answer']);
-        echo $_SESSION['score'];
+    if (!in_array($question['id'], $_SESSION['id'])) {
+        array_push($_SESSION['id'], $question['id']);
     }
+    unset($_POST['formId']);
+    unset($_POST['answer']);
+    echo $_SESSION['score'];
+}
 }
 echo '<br>';
 echo '<br>';
 if(isset($_SESSION['score'])){
-    if($_SESSION['score'] >= 10 || $_SESSION['score'] <= -10){
-        if($_SESSION['score'] >= 10){
-            echo 'We recommend to keep the file.';
-        } elseif($_SESSION['score'] <= -10){
-            echo 'We recommend to delte the file.';
-        }
-        session_unset();
-    }
+if($_SESSION['score'] >= 10 || $_SESSION['score'] <= -10){
+if($_SESSION['score'] >= 10){
+echo 'We recommend to keep the file.';
+} elseif($_SESSION['score'] <= -10){
+echo 'We recommend to delete the file.';
 }
-    ?>
-    </main>
-        	<footer id='footer_id'>
-
-    	</footer>
-    </body>
-<html>
+session_unset();
+}
+}
+?>
+</body>
+</html>

@@ -12,7 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Update vragen</title>
-        <link rel="stylesheet" href="Ala.css">
+        <link rel="stylesheet" href="stylesheet.css">
 </head>
     <body>
 	<header>
@@ -29,10 +29,10 @@
                 <article>
                     <form method="POST">
                        Vraag:<br>
-                            <input type="text" name="question" placeholder="Voeg hier een vraag toe" require><br><br>
+                        <input class="vragen1" type="text" name="question" placeholder="Voeg hier een vraag toe" require><br>
                         Score:<br>
-                                <input type="number" name="score" placeholder="Voeg hier een cijfer van -3 tot 3." min="-3" max="3" require><br>
-                        <input type="submit" name="toevoegen" value="Toevoegen">
+                        <input class="vragen1" type="number" name="score" placeholder="Voeg hier een cijfer van -3 tot 3." min="-3" max="3" require><br>
+                        <input class="btn" type="submit" name="toevoegen" value="Toevoegen">
                     </form>
                 </article>
             </section>
@@ -50,8 +50,22 @@
             }
             ?>
         </main>
-    	<footer>
-    		<p>Gemaakt door het team van MBO Rijnland</p>
-    	</footer>
+        <footer>
+		<article>
+			<h3>Contact ons:</h3>
+			<p>Betaplein 18, 2321 KS Leiden</p>
+			<p>Telefoonnummer: 31621092975</p>
+			<p>Email: 6028832@mborijnland.nl</p>
+		</article>
+<article>
+<h3>Follow Us</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fa fa-facebook">Facebook</i></a></li>
+          <li><a href="#"><i class="fa fa-twitter">Twitter</i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin">LinkedIn</i></a></li>
+          <li><a href="#"><i class="fa fa-instagram">Instagram</i></a></li>
+        </ul>
+</article>
+	</footer>
     </body>
 </html>
