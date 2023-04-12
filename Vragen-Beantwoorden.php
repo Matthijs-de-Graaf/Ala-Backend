@@ -152,7 +152,7 @@ if(isset($_SESSION['score'])){
     ?>
     </main>
         	<footer id='footer_id'>
-    		<p>Gemaakt door het team van MBO Rijnland</p>
+
     	</footer>
     </body>
 <html>

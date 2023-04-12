@@ -48,14 +48,10 @@ header nav {
 
 /* main stijl */
 #main_id {
-  max-width: 70vw;
   height: 20vh;
   background: #eee;
   box-shadow: 0 8px 8px -4px rgb(157, 183, 192);
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 10%;
 }
 
 main{
@@ -82,7 +78,9 @@ footer {
   text-align: center;
   position: absolute top 100 vh;
 }
-
+#footer_id{
+  margin-top: -20px;
+}
 footer p {
   margin: 0;
   font-size: 0.8rem;
