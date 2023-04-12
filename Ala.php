@@ -25,7 +25,7 @@
 		<p>Maak gebruik van onze <a href="Retrieve.php">vragenlijst</a> om uw documenten snel en gemakkelijk te ordenen. Onze vragenlijst zal u helpen bij het identificeren van documenten die moeten worden bewaard en degenen die kunnen worden verwijderd.</p>
 		<p>We hopen dat ons systeem u zal helpen bij het verbeteren van uw dagelijkse werkzaamheden en het beheer van uw documenten. Aarzel niet om met ons op te nemen als u vragen of opmerkingen heeft over ons systeem.</p>
 	</main>
-	<footer>
+	<footer id="footer_id">
 		<p>Gemaakt door het team van MBO Rijnland</p>
 	</footer>
 </body>
