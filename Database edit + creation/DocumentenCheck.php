@@ -78,8 +78,8 @@ if(isset($_POST['delete'])) {
 $fileName = basename($_FILES["fileToUpload"]["name"]);
 $keepPath = $keepDir . $fileName;
 if(file_exists($keepPath)) {
-  echo "<h2>Uploaded Photo:</h2>";
-  echo "<img src='$keepPath' alt='uploaded photo' width='200' height='200'>";
+  echo "<h2>Uploaded document:</h2>";
+  echo "<p>Bestand naam:</p>";
 }
 ?>
 
