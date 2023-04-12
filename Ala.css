@@ -48,7 +48,6 @@ header nav {
 
 /* main stijl */
 #main_id {
-  max-width: 70vw;
   height: 20vh;
   background: #eee;
   box-shadow: 0 8px 8px -4px rgb(157, 183, 192);
