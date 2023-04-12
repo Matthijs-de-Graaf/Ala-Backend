@@ -13,8 +13,7 @@
             <nav>
                 <a class="white" href="Ala.php">Home</a>
                 <a class="white" href="Toevoegen.php">Toevoegen</a> 
-                <a class="white" href="Retrieve.php">Vragenlijst</a>
-                <a class="white" href="Vragen-Beantwoorden.php">Beantwoorden</a>    
+                <a class="white" href="Retrieve.php">Vragenlijst</a>  
                 <a class="white" href="DocumentenCheck.php">DocuCheck</a>
             </nav>
     </header>
@@ -96,15 +95,7 @@ if(isset($_POST['unset'])){
 ?>
 <script>
 function smollWindow(){
-  window.open('Vragen-Beantwoorden.php','targetWindow',
-                                   `toolbar=no,
-                                    location=no,
-                                    status=no,
-                                    menubar=no,
-                                    scrollbars=yes,
-                                    resizable=yes,
-                                    width=SomeSize,
-                                    height=SomeSize`);
+  window.open('Vragen-Beantwoorden.php','targetWindow','fullscreen=no,width=500,height=380');
   return false;
 }
 </script>

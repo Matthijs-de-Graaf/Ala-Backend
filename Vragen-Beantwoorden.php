@@ -41,10 +41,10 @@
             // fetches for a questions with a score of 3
             fetch(3);
         } else if($a >= 0 || $a <= 0){
-            if($a >= 7 || $a <= -7){
+            if($a >= 6 || $a <= -6){
                 // fetches for a questions with a score of 2
                 fetch(1);
-            } elseif($a >= 4 || $a <= -4){
+            } elseif($a >= 3 || $a <= -3){
                 fetch(2);
             } else{
                 fetch(3);
@@ -72,7 +72,7 @@
 <header>
 	<img class="logo" src="DocuCheck.png ">
     </header>
-    <main id="main_id">
+    <main>
             <h1>
                 Advies Page
             </h1>
@@ -127,10 +127,11 @@ echo '<br>';
 if(isset($_SESSION['score'])){
     if($_SESSION['score'] >= 10 || $_SESSION['score'] <= -10){
         if($_SESSION['score'] >= 10){
-            header('Location: DocumentenCheck.php');
+            echo 'We recommend to keep the file.';
         } elseif($_SESSION['score'] <= -10){
-            header('Location: DocumentenCheck.php');
+            echo 'We recommend to delte the file.';
         }
+        session_unset();
     }
 }
     ?>

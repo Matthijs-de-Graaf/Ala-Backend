@@ -21,7 +21,6 @@ $result = $stmt->fetchAll();
             <a class="white" href="Ala.php">Home</a>
             <a class="white" href="Toevoegen.php">Toevoegen</a>
             <a class="white" href="Retrieve.php">Vragenlijst</a>
-			<a class="white" href="Vragen-Beantwoorden.php">Beantwoorden</a>
 			<a class="white" href="DocumentenCheck.php">DocuCheck</a>
         </nav>
     </header>
