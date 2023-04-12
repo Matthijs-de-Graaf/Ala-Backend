@@ -71,13 +71,6 @@
 <body>
 <header>
 	<img class="logo" src="DocuCheck.png ">
-        <nav>
-            <a class="white" href="Ala.php">Home</a>
-            <a class="white" href="Toevoegen.php">Toevoegen</a>
-            <a class="white" href="Retrieve.php">Vragenlijst</a>
-			<a class="white" href="Vragen-Beantwoorden.php">Beantwoorden</a>
-			<a class="white" href="DocumentenCheck.php">DocuCheck</a>
-        </nav>
     </header>
     <main id="main_id">
             <h1>
@@ -86,11 +79,6 @@
 
         <?php
         // Adds score value to ja and nee question
-        echo $_SESSION['fileName'];
-        echo '<br>';
-        echo $_SESSION['fileTmpName'];
-        echo '<br>';
-        echo $_SESSION['fileType'];
         foreach($question as $question){
             $ja = $question['score'];
             $nee = $question['score'] * -1;
@@ -139,12 +127,8 @@ echo '<br>';
 if(isset($_SESSION['score'])){
     if($_SESSION['score'] >= 10 || $_SESSION['score'] <= -10){
         if($_SESSION['score'] >= 10){
-            $_SESSION['advice'] = 'We recommend to keep the file';
-            echo 'We recommend to keep the file';
             header('Location: DocumentenCheck.php');
         } elseif($_SESSION['score'] <= -10){
-            $_SESSION['advice'] = 'We recommend to delete the file';
-            echo 'We recommend to delete the file';
             header('Location: DocumentenCheck.php');
         }
     }
