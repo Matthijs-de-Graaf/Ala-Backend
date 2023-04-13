@@ -20,8 +20,8 @@
     <main>
     <?php
 // Set de paden voor de "Keep" en "Delete" mappen
-$keepDir = "uploads/bewaren/";
-$deleteDir = "uploads/verwijderen/";
+$keepDir = "uploads/keep/";
+$deleteDir = "uploads/delete/";
 $uploadDir = "uploads/";
 // Get alle bestanden in de "Keep" map
 // $files = scandir($uploadDir);
@@ -111,7 +111,7 @@ function smollWindow(){
   <input class="btn" type="submit" name="keep" value="Bewaren">
   <input class="btn" type="submit" name="delete" value="Verwijderen"><br><br>
   <input class="btn" type="button" name='advies' value='Ontvang advies' onclick="smollWindow()">
-  <input class="btn" type="submit" name="show" value="Document weergeven">
+  <!-- <input class="btn" type="submit" name="show" value="Document weergeven"> -->
 </form>
 </main>
     
