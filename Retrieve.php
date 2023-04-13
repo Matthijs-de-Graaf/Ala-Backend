@@ -1,9 +1,9 @@
 <?php
-// Include database.php, check database.php for more info
+// Inclusief database.php, controleer database.php voor meer informatie
 include_once 'database.php';
-// Saves everything from the table questions in $result
+// Sla alles op van de tabel vragen in $resultaat
 $stmt = $conn->query("SELECT * FROM questions ORDER BY score DESC");
-$result = $stmt->fetchAll();
+$resultaat = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@ $result = $stmt->fetchAll();
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Update vragen</title>
+	<title>Vragen bijwerken</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -24,7 +24,7 @@ $result = $stmt->fetchAll();
 			<a class="white" href="DocumentenCheck.php">DocuCheck</a>
         </nav>
     </header>
-	<main>
+	<main id="main_id">
 		<table>
 			  <tr>
 			    <td>Vraagnummer:</td>
@@ -33,31 +33,31 @@ $result = $stmt->fetchAll();
 			  </tr>
 						<tr>
 						<?php
-		// This will keep executing untill result is equal to or lower then 0
+		// Dit zal blijven uitvoeren totdat resultaat gelijk is aan of lager dan 0
 		$i=1;
-		foreach ($result as $row) {
+		foreach ($resultaat as $rij) {
 		?>
-							<!--echos $i to act as a fake id-->
+							<!--echos $i om te dienen als een nep-id-->
 							<td><?php echo $i?></td>
-							<!--Echos the question and score that question has-->
-							<td class="vragen"><?php echo $row["question"];?></td>
-							<td><?php echo $row["score"]; ?></td>
-							<!--Sends the user to update-process.php with the id in there as a GET, making it easier to work with-->
-							<td><a class="btn" href="update-process.php?id=<?php echo $row["id"].'&question='.$i; ?>">Bewerken</a></td>
-							<!--Sends the user to delete.php with a Get statement, same as above but also uses an ONCLICk to warn the user before deleting it-->
-							<td><a class="btn" onclick="warning()" href="Delete.php?id=<?php echo $row["id"]; ?>">Verwijderen</a></td>
+							<!--Echos de vraag en score die bij die vraag horen-->
+							<td class="vragen"><?php echo $rij["question"];?></td>
+							<td><?php echo $rij["score"]; ?></td>
+							<!--Stuurt de gebruiker naar update-process.php met het id als GET, waardoor het gemakkelijker wordt om mee te werken-->
+							<td><a class="btn" href="update-process.php?id=<?php echo $rij["id"].'&question='.$i; ?>">Bewerken</a></td>
+							<!--Stuurt de gebruiker naar delete.php met een Get statement, hetzelfde als hierboven, maar gebruikt ook een ONCLICk om de gebruiker te waarschuwen voordat deze wordt verwijderd-->
+							<td><a class="btn" onclick="waarschuwing()" href="Delete.php?id=<?php echo $rij["id"]; ?>">Verwijderen</a></td>
 							<script> 
-								function warning(){
-									let text = "Are you sure you want to delete this question?";
-		  								if (confirm(text) == false) {
+								function waarschuwing(){
+									let tekst = "Weet u zeker dat u deze vraag wilt verwijderen?";
+		  								if (confirm(tekst) == false) {
 											event.preventDefault();
 		  								}
 									}
 							</script>
 		    		    </tr>
 						<?php
-						// if you dont know what this is i am very concerned 
-						// Anil doesnt know this line of code thats why he writes this ^
+						// als je niet weet wat dit is, maak ik me ernstig zorgen
+						// Anil kent deze regel code niet daarom schrijft hij dit ^
 						$i++;
 								}
 						?>

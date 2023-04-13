@@ -1,5 +1,6 @@
 <?php
     session_start();
+    error_reporting(E_ERROR);
     if(!isset($_SESSION['id'])){
         $_SESSION['id'] = [];
     }
@@ -86,9 +87,6 @@
             $question = $_POST['question'];
         
             // ... rest of your code to process the question ...
-          } else {
-            // Handle case when 'question' key is not present in $_POST
-            echo "Error: No question provided";
           }
         }
         ?><?php
@@ -122,6 +120,20 @@
     <input type="radio" name="answer" value="0" require>
     Weet ik niet<br>
     <input class="btn" type="Submit" name='formId' value="Verzenden">
+</form>
+<?php
+if (isset($_POST['reset'])) {
+    // reset session data
+    session_unset();
+    session_destroy();
+    $_SESSION = [];
+    // redirect to the same page to start over
+    header("Location: {$_SERVER['REQUEST_URI']}");
+    exit();
+}?>
+<form method="POST">
+    <!-- existing form fields here -->
+    <input class="btn" type="submit" name="reset" value="Start opnieuw">
 </form>
 <?php
 if (isset($_POST['formId'])) {

@@ -1,8 +1,8 @@
 <?php
-    // Includes the daatabase connection, very important no delete
+    // Inclusief de database connectie, erg belangrijk om niet te verwijderen
     include_once 'database.php';
-    $stmt = $conn->prepare("INSERT INTO questions (question, score) VALUES(:question, :score)");
-    $stmt->bindParam(':question', $_POST['question']);
+    $stmt = $conn->prepare("INSERT INTO vragen (vraag, score) VALUES(:vraag, :score)");
+    $stmt->bindParam(':vraag', $_POST['vraag']);
     $stmt->bindParam(':score', $_POST['score']);
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Update vragen</title>
+        <title>Vragen Toevoegen</title>
         <link rel="stylesheet" href="stylesheet.css">
 </head>
     <body>
@@ -29,7 +29,7 @@
                 <article>
                     <form method="POST">
                        Vraag:<br>
-                        <input class="vragen1" type="text" name="question" placeholder="Voeg hier een vraag toe" require><br>
+                        <input class="vragen1" type="text" name="vraag" placeholder="Voeg hier een vraag toe" require><br>
                         Score:<br>
                         <input class="vragen1" type="number" name="score" placeholder="Voeg hier een cijfer van -3 tot 3." min="-3" max="3" require><br>
                         <input class="btn" type="submit" name="toevoegen" value="Toevoegen">
@@ -37,14 +37,14 @@
                 </article>
             </section>
             <?php
-            // checks if the submit button has been clicked
+            // controleert of de toevoegen knop is geklikt
             if(isset($_POST['toevoegen'])){
-                // checks if the value is indeed inbetween -3 and 3
+                // controleert of de waarde tussen -3 en 3 ligt
                 if($_POST['score'] < -3 OR $_POST['score'] > 3){
-                    // gives  them meme if it isnt
-                    echo 'An unkown error occurred. This usually happends when you dont fill give a value within the specified ranges.';
+                    // geeft een melding als dit niet het geval is
+                    echo 'Er is een onbekende fout opgetreden. Dit gebeurt meestal als je geen waarde binnen de opgegeven bereiken geeft.';
                 } else {
-                    // updates the database if it is
+                    // voegt de vraag toe aan de database als het wel het geval is
                     $stmt->execute();
                 }
             }
@@ -58,7 +58,7 @@
 			<p>Email: 6028832@mborijnland.nl</p>
 		</article>
 <article>
-<h3>Follow Us</h3>
+<h3>Volg ons</h3>
         <ul class="social-media">
           <li><a href="#"><i class="fa fa-facebook">Facebook</i></a></li>
           <li><a href="#"><i class="fa fa-twitter">Twitter</i></a></li>

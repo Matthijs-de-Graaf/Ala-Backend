@@ -70,7 +70,9 @@ main {
   text-align: center;
   height: 60vh;
 }
-
+#main_id{
+  margin-bottom: 105vh;
+}
 .vragen {
   width: 60vw;
   color: white;
@@ -176,4 +178,6 @@ footer {
   height: auto; 
   position: fixed;
   bottom: 0;
+  right: 0;
+  left: 0;
 }

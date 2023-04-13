@@ -1,18 +1,18 @@
 <?php
-    // Conects to the database, for more info  check database.php
+    // Maakt verbinding met de database, voor meer informatie check database.php
     include_once 'database.php';
-    // Tries to send the delete query. if it fails it still sends it back.
+    // Probeert de delete-query te versturen. Als het niet lukt, stuurt het nog steeds terug.
     try {
-        // Sends a delete query to the databse.
+        // Verstuurt een delete-query naar de database.
         $stmt = $conn->prepare("DELETE FROM questions WHERE id= :id");
         $stmt->bindParam(':id', $_GET['id']);
         $stmt->execute();
-        // Sends the user back so they cant mess around over here
+        // Stuurt de gebruiker terug zodat ze hier niet kunnen knoeien.
         header("Location: Retrieve.php");
-        // if there is an error it will still send the user back
+        // Als er een fout optreedt, stuurt het nog steeds de gebruiker terug.
     } catch (\Throwable $th) {
         //throw $th;
-        // Sends the user back so they cant mess around over here
+        // Stuurt de gebruiker terug zodat ze hier niet kunnen knoeien.
         header("Location: Retrieve.php");
     } 
 ?>

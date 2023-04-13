@@ -1,3 +1,0 @@
-1. Netjes maken.
-2. Carousel fixen;
-eerste question mag alleen naar links, daarna moet je links en rechts kunnen.

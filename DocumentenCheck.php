@@ -20,53 +20,62 @@
     <main>
     <?php
 // Set de paden voor de "Keep" en "Delete" mappen
-$keepDir = "uploads/keep/";
-$deleteDir = "uploads/delete/";
+$keepDir = "uploads/bewaren/";
+$deleteDir = "uploads/verwijderen/";
+$uploadDir = "uploads/";
+// Get alle bestanden in de "Keep" map
+// $files = scandir($uploadDir);
+// // Verwijder de "." en ".." mapvermeldingen
+// $files = array_diff($files, array(".", ".."));
+
+// // Toon elk bestand als een link
+// foreach($files as $file) {
+// echo "<a href="$uploadDir$file">$file</a><br>";
+// }
 
 // Maak de "Keep" map aan als deze niet bestaat
 if (!file_exists($keepDir)) {
-  if (!mkdir($keepDir, 0777, true)) {
-    die("Kon map niet aanmaken: $keepDir");
-  }
+if (!mkdir($keepDir, 0777, true)) {
+die("Kon map niet aanmaken: $keepDir");
+}
 }
 
 // Maak de "Delete" map aan als deze niet bestaat
 if (!file_exists($deleteDir)) {
-  if (!mkdir($deleteDir, 0777, true)) {
-    die("Kon map niet aanmaken: $deleteDir");
-  }
+if (!mkdir($deleteDir, 0777, true)) {
+die("Kon map niet aanmaken: $deleteDir");
+}
 }
 
-// Controleer of de "Keep" knop is ingedrukt
-if(isset($_POST['keep'])) {
-  // Haal de geüploade bestandsinformatie op
-  $fileName = basename($_FILES["fileToUpload"]["name"]);
-  $fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
-  $fileType = $_FILES["fileToUpload"]["type"];
+// Controleer of de "Bewaren" knop is ingedrukt
+if(isset($_POST['bewaren'])) {
+// Haal de geüploade bestandsinformatie op
+$fileName = basename($_FILES["fileToUpload"]["name"]);
+$fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
+$fileType = $_FILES["fileToUpload"]["type"];
 
+// Stel het bestandspad en de naam in voor de "Keep" map
+$keepPath = $keepDir . $fileName;
 
-  // Stel het bestandspad en de naam in voor de "Keep" map
-  $keepPath = $keepDir . $fileName;
-
-  // Verplaats het geüploade bestand naar de "Keep" map
-  if (move_uploaded_file($fileTmpName, $keepPath)) {
-    echo "Bestand succesvol geüpload en bewaard.";
-  } else {
-    echo "Sorry, er is een fout opgetreden bij het uploaden en bewaren van uw bestand.";
-  }
+// Verplaats het geüploade bestand naar de "Keep" map
+if (move_uploaded_file($fileTmpName, $keepPath)) {
+echo "Bestand succesvol geüpload en bewaard.";
+} else {
+echo "Sorry, er is een fout opgetreden bij het uploaden en bewaren van uw bestand.";
+}
 }
 
-// Controleer of de "Delete" knop is ingedrukt
-if(isset($_POST['delete'])) {
-  // Haal de geüploade bestandsinformatie op
-  $fileName = basename($_FILES["fileToUpload"]["name"]);
-  $fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
-  $fileType = $_FILES["fileToUpload"]["type"];
+// Controleer of de "Verwijderen" knop is ingedrukt
+if(isset($_POST['verwijderen'])) {
+// Haal de geüploade bestandsinformatie op
+$fileName = basename($_FILES["fileToUpload"]["name"]);
+$fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
+$fileType = $_FILES["fileToUpload"]["type"];
 
-
+  
   // Stel het bestandspad en de naam in voor de "Delete" map
   $deletePath = $deleteDir . $fileName;
-
+  
   // Verplaats het geüploade bestand naar de "Delete" map
   if (move_uploaded_file($fileTmpName, $deletePath)) {
     echo "Bestand succesvol geüpload en gemarkeerd voor verwijdering.";
@@ -84,7 +93,7 @@ if(isset($fileName)){
 }
 if(isset($keepPath)){
   if(file_exists($keepPath)) {
-  echo "<h2>Geüpload bestand:</h2>";
+    echo "<h2>Geüpload bestand:</h2>";
   echo "<p>Bestandsnaam: $fileName";
 }
 }
@@ -98,15 +107,37 @@ function smollWindow(){
 </script>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
   <h2>Selecteer een bestand om te uploaden:</h2><br>
-  <input  type="file" name="fileToUpload"><br><br>
+  <input type="file" name="fileToUpload" accept=".pdf,.docx,.docx,.png,.jpg"><br><br>
   <input class="btn" type="submit" name="keep" value="Bewaren">
-  <input class="btn" type="submit" name="delete" value="Verwijderen"><br>
-  <br>
+  <input class="btn" type="submit" name="delete" value="Verwijderen"><br><br>
   <input class="btn" type="button" name='advies' value='Ontvang advies' onclick="smollWindow()">
+  <input class="btn" type="submit" name="show" value="Document weergeven">
 </form>
-    </main>
+</main>
     
 <?php
+// Controleer of de "Show" knop is ingedrukt
+if(isset($_POST['show'])) {
+  // Haal de geüploade bestandsinformatie op
+  $fileName = basename($_FILES["fileToUpload"]["name"]);
+  $fileType = $_FILES["fileToUpload"]["type"];
+
+  // Stel het bestandspad en de naam in voor de "Keep" map
+  $keepPath = $keepDir . $fileName;
+
+  // Laat het geüploade bestand zien uit de "Keep" map
+  if(file_exists($keepPath)) {
+    echo "<h2>Weergave van het geüploade bestand:</h2>";
+    if($fileType == "application/pdf"){
+      echo "<embed src='$keepPath' type='application/pdf' width='10vw' height='10vh'/>";
+    }
+    else{
+      echo "<img src='$keepPath' alt='$fileName' width='50%'/>";
+    }
+  } else {
+    echo "Sorry, het bestand kon niet worden gevonden.";
+  }
+}
 $keepCount = count(glob($keepDir . "*"));
 
 // Haal het aantal bestanden op in de "Delete" map
@@ -116,12 +147,12 @@ $deleteCount = count(glob($deleteDir . "*"));
 echo "<p id=id2>Aantal bestanden in de map <a href=uploads/keep/>Keep:</a> $keepCount <br> Aantal bestanden in de map <a href=uploads/delete/>Delete:</a> $deleteCount</p>";
 
 if(isset($_POST['unset'])){
-session_unset();
+  session_unset();
 }
 ?>
 	<footer>
 		<article>
-			<h3>Contact ons:</h3>
+      <h3>Contact ons:</h3>
 			<p>Betaplein 18, 2321 KS Leiden</p>
 			<p>Telefoonnummer: 31621092975</p>
 			<p>Email: 6028832@mborijnland.nl</p>
@@ -135,6 +166,6 @@ session_unset();
           <li><a href="#"><i class="fa fa-instagram">Instagram</i></a></li>
         </ul>
 </article>
-	</footer>
+</footer>
 </body>
 </html>
